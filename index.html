@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เค้ารักเธอ ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;700&display=swap');
+        body {
+            font-family: 'Prompt', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffebee;
+            color: #d32f2f;
+            text-align: center;
+        }
+        .container {
+            max-width: 95%;
+            width: 800px;
+            margin: 0 auto;
+            padding: 20px 10px;
+        }
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 20px;
+            color: #c62828;
+        }
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+        }
+        h3 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+        }
+        p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .heart {
+            font-size: clamp(60px, 15vw, 100px);
+            color: #e53935;
+            animation: heartbeat 1s infinite;
+            margin: 30px 0;
+        }
+        .memory-section {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .btn {
+            background-color: #e53935;
+            color: white;
+            border: none;
+            padding: clamp(10px, 3vw, 12px) clamp(20px, 5vw, 25px);
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background-color: #c62828;
+            transform: scale(1.05);
+        }
+        .hidden {
+            display: none;
+        }
+        .photos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .photo {
+            width: clamp(100px, 30vw, 150px);
+            height: clamp(100px, 30vw, 150px);
+            background-color: #f8bbd0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .photo img:hover {
+            transform: scale(1.05);
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f8bbd0;
+            position: absolute;
+            animation: confetti 5s ease-in-out infinite;
+        }
+        @keyframes confetti {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        .timer-section {
+            background-color: #f8bbd0;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .timer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .time-unit {
+            background-color: white;
+            padding: clamp(8px, 2vw, 15px);
+            border-radius: 10px;
+            min-width: clamp(60px, 15vw, 80px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .time-unit .value {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: bold;
+            color: #c62828;
+        }
+        .time-unit .label {
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            color: #d32f2f;
+        }
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .floating-heart {
+            position: absolute;
+            animation: float 6s linear infinite;
+            opacity: 0.5;
+            font-size: 20px;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0); opacity: 1; }
+            100% { transform: translateY(-10vh) translateX(10vw); opacity: 0; }
+        }
+        .love-quote {
+            font-style: italic;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .playlist-section {
+            margin-top: 30px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+        }
+        .milestone {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        @media (min-width: 768px) {
+            .milestone {
+                flex-direction: row;
+                text-align: left;
+            }
+        }
+        .milestone-icon {
+            font-size: clamp(20px, 5vw, 24px);
+            margin: 0 10px 10px 0;
+        }
+        @media (min-width: 768px) {
+            .milestone-icon {
+                margin: 0 15px 0 0;
+            }
+        }
+        .milestone-content {
+            flex: 1;
+        }
+        .heart-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        /* iPad/Tablet Specific Styles */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .container {
+                max-width: 90%;
+            }
+            .timer {
+                gap: 12px;
+            }
+            .photo {
+                width: 120px;
+                height: 120px;
+            }
+        }
+        
+        /* Mobile Specific Styles */
+        @media (max-width: 767px) {
+            .container {
+                padding: 15px 10px;
+            }
+            .timer {
+                gap: 8px;
+            }
+            .time-unit {
+                padding: 8px;
+                min-width: 55px;
+            }
+            .milestone {
+                padding: 15px 10px;
+            }
+            .milestone-content h3 {
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+            .milestone-content p {
+                margin-top: 5px;
+            }
+        }
+        
+        /* Orientation Specific Styles */
+        @media (orientation: landscape) and (max-width: 900px) {
+            .timer {
+                flex-wrap: wrap;
+            }
+            .heart {
+                margin: 15px 0;
+            }
+        }
+         /* สไตล์สำหรับเพลย์ลิสต์ */
+    .song-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 25px;
+        border-radius: 15px;
+        overflow: hidden;
+        background-color: #fff4f4;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+    }
+    
+    .song-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+    
+    .song-cover {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        background-color: #ffcdd2;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .song-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+    
+    .song-box:hover .song-cover img {
+        transform: scale(1.05);
+    }
+    
+    .song-details {
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+    }
+    
+    .song-details h4 {
+        margin: 0 0 5px 0;
+        color: #d32f2f;
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+    }
+    
+    .song-details p {
+        margin: 0;
+        font-size: clamp(0.8rem, 2vw, 1rem);
+        color: #e57373;
+    }
+    
+    .song-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 20px;
+        margin-top: 25px;
+    }
+    
+    .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(255, 255, 255, 0.8);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 2;
+    }
+    
+    .play-icon {
+        color: #d32f2f;
+        font-size: 20px;
+    }
+    
+    .song-box:hover .play-button {
+        opacity: 1;
+    }
+    
+    .equalizer {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        display: flex;
+        align-items: flex-end;
+        height: 20px;
+        gap: 2px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .equalizer.active {
+        opacity: 1;
+    }
+    
+    .eq-bar {
+        width: 3px;
+        background-color: #d32f2f;
+        border-radius: 1px;
+        animation: equalize 1s ease-in-out infinite;
+    }
+    
+    .eq-bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+    .eq-bar:nth-child(2) { height: 60%; animation-delay: 0.3s; }
+    .eq-bar:nth-child(3) { height: 80%; animation-delay: 0.5s; }
+    .eq-bar:nth-child(4) { height: 100%; animation-delay: 0.2s; }
+    .eq-bar:nth-child(5) { height: 70%; animation-delay: 0.4s; }
+    
+    @keyframes equalize {
+        0%, 100% { transform: scaleY(0.8); }
+        50% { transform: scaleY(1.2); }
+    }
+    
+    .heart-notes {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+    
+    .heart-note {
+        position: absolute;
+        font-size: 18px;
+        animation: float-note 3s linear forwards;
+        opacity: 0;
+    }
+    
+    @keyframes float-note {
+        0% { transform: translate(0, 0); opacity: 0; }
+        10% { opacity: 1; }
+        100% { transform: translate(calc(var(--moveX) * 100px), calc(var(--moveY) * -100px)); opacity: 0; }
+    }
+    
+    .now-playing-info {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #ffe6e6;
+        padding: 10px 20px;
+        border-radius: 30px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        pointer-events: none;
+    }
+    
+    .now-playing-info.visible {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+        pointer-events: all;
+    }
+    
+    .now-playing-thumb {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    
+    .now-playing-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .now-playing-text {
+        flex: 1;
+    }
+    
+    .now-playing-text h5 {
+        margin: 0;
+        font-size: 14px;
+        color: #d32f2f;
+    }
+    
+    .now-playing-text p {
+        margin: 0;
+        font-size: 12px;
+        color: #e57373;
+    }
+    
+    .now-playing-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .control-btn {
+        background: none;
+        border: none;
+        color: #d32f2f;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(255,255,255,0.6);
+        transition: all 0.2s ease;
+    }
+    
+    .control-btn:hover {
+        background-color: rgba(255,255,255,0.9);
+        transform: scale(1.1);
+    }
+    
+    @media (max-width: 767px) {
+        .song-grid {
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+        }
+        
+        .now-playing-info {
+            width: 90%;
+            padding: 8px 15px;
+        }
+        
+        .now-playing-thumb {
+            width: 30px;
+            height: 30px;
+        }
+    }
+    </style>
+    
+</head>
+<body>
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <div class="container">
+        <h1>ถึงอชิรญา คนที่พิเศษที่สุด</h1>
+        
+        <div class="heart">❤️</div>
+        
+        <p>
+            เค้าอยากจะบอกว่า เค้ารักเธอมากเหลือเกิน<br>
+            ทุกๆ วันที่ได้อยู่กับเธอ ทำให้โลกของเค้าสดใสขึ้นมากเลย
+        </p>
+        
+        <!-- ส่วนตัวนับเวลาที่เป็นแฟนกัน -->
+        <div class="timer-section">
+            <h2>เราเป็นแฟนกันมาแล้ว</h2>
+            <p id="anniversary-date">นับจากวันที่ 25 ธันวาคม 2022</p>
+            <div class="timer">
+                <div class="time-unit">
+                    <div class="value" id="years">0</div>
+                    <div class="label">ปี</div>
+                </div>
+                <div class="time-unit">
+                    <div class="value" id="months">0</div>
+                    <div class="label">เดือน</div>
+                </div>
+                <div class="time-unit">
+                    <div class="value" id="days">0</div>
+                    <div class="label">วัน</div>
+                </div>
+                <div class="time-unit">
+                    <div class="value" id="hours">0</div>
+                    <div class="label">ชม.</div>
+                </div>
+                <div class="time-unit">
+                    <div class="value" id="minutes">0</div>
+                    <div class="label">นาที</div>
+                </div>
+                <div class="time-unit">
+                    <div class="value" id="seconds">0</div>
+                    <div class="label">วิ</div>
+                </div>
+            </div>
+            <p class="love-quote">"เวลาอาจจะผ่านไป แต่ความรู้สึกของเค้าที่มีต่อเธอไม่เคยเปลี่ยนแปลง"</p>
+        </div>
+        
+        <div class="memory-section">
+            <h2>ความทรงจำดีๆ ของเรา</h2>
+            <div class="photos">
+                <div class="photo">
+                    <img src="img/LINE_ALBUM_หมู_250410_1.jpg" alt="ความทรงจำของเรา">
+                </div>
+                <div class="photo">
+                    <img src="img/LINE_ALBUM_หมู_250410_2.jpg" alt="ความทรงจำของเรา">
+                </div>
+                <div class="photo">
+                    <img src="img/LINE_ALBUM_หมู_250410_3.jpg" alt="ความทรงจำของเรา">
+                </div>
+            </div>
+            <p>เราผ่านช่วงเวลาดีๆ มาด้วยกันมากมาย และเค้าตั้งตารอที่จะสร้างความทรงจำดีๆ อีกมากมายกับเธอ</p>
+        </div>
+        
+        <!-- ช่วงเวลาพิเศษของเรา -->
+        <div class="memory-section">
+            <h2>ช่วงเวลาพิเศษของเรา</h2>
+            <div class="milestone">
+                <div class="milestone-icon">💑</div>
+                <div class="milestone-content">
+                    <h3>วันที่เราเริ่มคบกัน</h3>
+                    <p>25 ธันวาคม 2022 - วันที่ดูหนังเรื่อง Avatar ด้วยกันเป็นเรื่องแรก</p>
+                </div>
+            </div>
+            <div class="milestone">
+                <div class="milestone-icon">🎁</div>
+                <div class="milestone-content">
+                    <h3>ของขวัญชิ้นแรกที่ซื้อให้กัน</h3>
+                    <p>เฟิ้ดซื้อแว่นให้ดรีม ดรีมซื้อCare Bearsให้เฟิ้ด</p>
+                </div>
+            </div>
+            <div class="milestone">
+                <div class="milestone-icon">✈️</div>
+                <div class="milestone-content">
+                    <h3>ทริปใหญ่แรกของเรา</h3>
+                    <p>ไปทะเลลลล สนุกมากก แต่มีทะเลาะกันด้วยย</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- เปลี่ยนส่วนของเพลย์ลิสต์เพลง -->
+        <div class="playlist-section">
+            <h2>เพลงที่มีความหมายกับเรา</h2>
+            <p>เพลงเหล่านี้ทำให้เค้านึกถึงเธอทุกครั้งที่ได้ฟัง</p>
+            
+            <div class="song-grid">
+                <div class="song-box" data-song="song/Ruth B. - Dandelions (Audio)-yt.savetube.me.mp3" data-title="ที่สุดของดรีมเมอร์" data-artist="Dandelions - Ruth B." data-start="47" data-end="86">
+                    <div class="song-cover">
+                        <img src="img/ab67616d0000b27397e971f3e5347509.png" alt="ปกเพลง">
+                        <div class="play-button">
+                            <div class="play-icon">▶️</div>
+                        </div>
+                        <div class="equalizer">
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                        </div>
+                        <div class="heart-notes"></div>
+                    </div>
+                    <div class="song-details">
+                        <h4>ที่สุดของดรีมเมอร์</h4>
+                        <p>Dandelions - Ruth B.</p>
+                    </div>
+                </div>
+                
+                <div class="song-box" data-song="song/BADMIXY - Just For You ( Feat. Jeep )-yt.savetube.me.mp3" data-title="ที่สุดของเฟิ้ดชา" data-artist="Just For You - BADMIXY" data-start="60" data-end="106">
+                    <div class="song-cover">
+                        <img src="img/b6a0e6f3db4c60bad08056292af7877f.png" alt="ปกเพลง">
+                        <div class="play-button">
+                            <div class="play-icon">▶️</div>
+                        </div>
+                        <div class="equalizer">
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                        </div>
+                        <div class="heart-notes"></div>
+                    </div>
+                    <div class="song-details">
+                        <h4>ที่สุดของเฟิ้ดชา</h4>
+                        <p>Just For You - BADMIXY</p>
+                    </div>
+                </div>
+                
+                <div class="song-box" data-song="song/Billie Eilish - BIRDS OF A FEATHER (Official Lyric Video)-yt.savetube.me.mp3" data-title="ที่สุดของเรา" data-artist="BIRDS OF A FEATHER - Billie Eilish" data-start="60.4" data-end="96">
+                    <div class="song-cover">
+                        <img src="img/1900x1900-000000-80-0-0.png" alt="ปกเพลง">
+                        <div class="play-button">
+                            <div class="play-icon">▶️</div>
+                        </div>
+                        <div class="equalizer">
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                        </div>
+                        <div class="heart-notes"></div>
+                    </div>
+                    <div class="song-details">
+                        <h4>ที่สุดของเรา</h4>
+                        <p>BIRDS OF A FEATHER - Billie Eilish</p>
+                    </div>
+                </div>
+                
+                <div class="song-box" data-song="song/เธอ - COCKTAIL [ เนื้อิเพลง ]-yt.savetube.me.mp3" data-title="ที่สุดในคอนเสิร์ต" data-artist="เธอ - COCKTAIL" data-start="81" data-end="122">
+                    <div class="song-cover">
+                        <img src="img/ab67616d00001e0276d5f7fda4dcbf72.png" alt="ปกเพลง">
+                        <div class="play-button">
+                            <div class="play-icon">▶️</div>
+                        </div>
+                        <div class="equalizer">
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                        </div>
+                        <div class="heart-notes"></div>
+                    </div>
+                    <div class="song-details">
+                        <h4>ที่สุดในคอนเสิร์ต</h4>
+                        <p>เธอ - COCKTAIL</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="now-playing-info" id="nowPlayingBar">
+            <div class="now-playing-thumb">
+                <img src="/api/placeholder/400/400" alt="กำลังเล่น" id="nowPlayingThumb">
+            </div>
+            <div class="now-playing-text">
+                <h5 id="nowPlayingTitle">ชื่อเพลง</h5>
+                <p id="nowPlayingArtist">ศิลปิน</p>
+            </div>
+            <div class="now-playing-controls">
+                <button class="control-btn" id="pauseBtn">⏸️</button>
+                <button class="control-btn" id="closePlayerBtn">✖️</button>
+            </div>
+        </div>
+        
+        <button class="btn" id="loveBtn">กดเพื่อเซอร์ไพรส์ อิอิ</button>
+        
+        <div id="surprise" class="hidden">
+            <h2>เธอคือทุกอย่างสำหรับเค้า</h2>
+            <p>
+                เธอคือแรงบันดาลใจใช้ชีวิตของเค้า<br>
+                เธอคือกำลังใจที่ทำให้เค้าผ่านทุกอุปสรรค<br>
+                เธอคือความสุขในทุกๆ วันของเค้า<br>
+                เค้าขอบคุณที่เธอเข้ามาในชีวิตเค้านะ<br><br>
+                <strong>เค้ารักเธอตลอดไป ❤️</strong>
+            </p>
+            
+            <div class="heart-animation" style="font-size: clamp(50px, 12vw, 80px); margin: 20px 0;">
+                💖
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ตั้งค่าวันที่เริ่มเป็นแฟนกัน - แก้ไขเป็นวันจริงของคุณ
+        const startDate = new Date('2022-12-25T00:00:00');
+        
+        // อัปเดตตัวนับเวลา
+        function updateTimer() {
+            const now = new Date();
+            const difference = now - startDate;
+            
+            const years = Math.floor(difference / (1000 * 60 * 60 * 24 * 365));
+            const months = Math.floor((difference % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+            const days = Math.floor((difference % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+            
+            document.getElementById('years').textContent = years;
+            document.getElementById('months').textContent = months;
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+        
+        // อัปเดตตัวนับเวลาทุกวินาที
+        setInterval(updateTimer, 1000);
+        updateTimer(); // เริ่มต้นทันที
+        
+        // สร้างหัวใจลอย
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            const heartSymbols = ['❤️', '💖', '💕', '💓', '💗', '💘', '💝'];
+            
+            // ปรับจำนวนหัวใจตามขนาดหน้าจอ
+            const screenWidth = window.innerWidth;
+            const heartCount = screenWidth < 768 ? 10 : 20;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('floating-heart');
+                heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                
+                // สุ่มตำแหน่งและเวลา
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = 5 + Math.random() * 10 + 's';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.fontSize = (screenWidth < 768 ? 8 : 10) + Math.random() * (screenWidth < 768 ? 15 : 30) + 'px';
+                
+                container.appendChild(heart);
+            }
+        }
+        
+        // เรียกใช้งานฟังก์ชันสร้างหัวใจลอย
+        createFloatingHearts();
+        
+        // ทำงานใหม่เมื่อขนาดหน้าจอเปลี่ยน
+        window.addEventListener('resize', function() {
+            const container = document.getElementById('floatingHearts');
+            container.innerHTML = ''; // ล้างหัวใจเดิม
+            createFloatingHearts(); // สร้างใหม่
+        });
+        
+        // สร้างเอฟเฟกต์หัวใจเต้น
+        document.getElementById('loveBtn').addEventListener('click', function() {
+            document.getElementById('surprise').classList.remove('hidden');
+            
+            // สร้างคอนเฟตตี้ (ปรับตามขนาดหน้าจอ)
+            const screenWidth = window.innerWidth;
+            const confettiCount = screenWidth < 768 ? 25 : 50;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                createConfetti();
+            }
+            
+            // เล่นเพลง (ถ้าต้องการเพิ่ม)
+            // const audio = new Audio('เพลงของคุณ.mp3');
+            // audio.play();
+            
+            // เลื่อนไปยังส่วน surprise
+            setTimeout(() => {
+                document.getElementById('surprise').scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+        });
+        
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            
+            // สุ่มตำแหน่ง สี และการหน่วงเวลา
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = getRandomColor();
+            confetti.style.animationDelay = Math.random() * 5 + 's';
+            
+            // ปรับขนาดตามหน้าจอ
+            const screenWidth = window.innerWidth;
+            confetti.style.width = (screenWidth < 768 ? 6 : 10) + 'px';
+            confetti.style.height = (screenWidth < 768 ? 6 : 10) + 'px';
+            
+            document.body.appendChild(confetti);
+            
+            // ลบคอนเฟตตี้หลังจากแอนิเมชันเสร็จสิ้น
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+        
+        function getRandomColor() {
+            const colors = ['#e53935', '#f8bbd0', '#ffcdd2', '#ef9a9a', '#ff8a80', '#d32f2f'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // เพิ่มฟังก์ชันเล่นเพลง
+    let currentAudio = null;
+    let currentSongBox = null;
+
+    // ฟังก์ชันสำหรับสร้างเอฟเฟกต์โน้ตเพลงรูปหัวใจ
+    function createHeartNotes(container) {
+        const heartSymbols = ['❤️', '💖', '💕', '💗', '🎵', '🎶'];
+        const notesCount = 5;
+        
+        for (let i = 0; i < notesCount; i++) {
+            setTimeout(() => {
+                const note = document.createElement('div');
+                note.classList.add('heart-note');
+                note.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                
+                // สุ่มตำแหน่งเริ่มต้น
+                const startPosX = 20 + Math.random() * 60; // สุ่มในช่วง 20-80% ของความกว้าง
+                const startPosY = 80 + Math.random() * 15; // สุ่มใกล้ๆ ด้านล่าง
+                
+                // สุ่มทิศทางการเคลื่อนที่
+                const moveX = -1 + Math.random() * 2; // -1 ถึง 1
+                const moveY = -1 - Math.random(); // -1 ถึง -2
+                
+                note.style.left = `${startPosX}%`;
+                note.style.top = `${startPosY}%`;
+                note.style.setProperty('--moveX', moveX);
+                note.style.setProperty('--moveY', moveY);
+                
+                container.appendChild(note);
+                
+                // ลบโน้ตหลังจากแอนิเมชั่นเสร็จ
+                setTimeout(() => {
+                    note.remove();
+                }, 3000);
+            }, i * 300); // สร้างโน้ตทุกๆ 300ms
+        }
+    }
+
+    // เพิ่ม Event Listener ให้กับทุกเพลง
+    document.querySelectorAll('.song-box').forEach(songBox => {
+        songBox.addEventListener('click', function() {
+            const songPath = this.getAttribute('data-song');
+            const songTitle = this.getAttribute('data-title');
+            const songArtist = this.getAttribute('data-artist');
+            const coverImg = this.querySelector('.song-cover img').src;
+            const equalizer = this.querySelector('.equalizer');
+            const heartNotesContainer = this.querySelector('.heart-notes');
+
+             // เพิ่มการอ่านค่าเวลาเริ่มต้นและสิ้นสุด
+            const startTime = parseFloat(this.getAttribute('data-start') || 0);
+            const endTime = parseFloat(this.getAttribute('data-end') || 0);
+                    
+            // หยุดเพลงปัจจุบัน (ถ้ามี)
+            if (currentAudio) {
+                currentAudio.pause();
+                if (currentSongBox) {
+                    currentSongBox.querySelector('.equalizer').classList.remove('active');
+                    currentSongBox.querySelector('.play-icon').textContent = '▶️';
+                }
+            }
+            
+            // ตรวจสอบว่าเป็นการคลิกเพลงเดิมหรือไม่
+            if (currentAudio && currentSongBox === this) {
+                // ยกเลิกการทำงานของเพลงปัจจุบัน
+                currentAudio = null;
+                currentSongBox = null;
+                
+                // ซ่อนแถบแสดงเพลงที่กำลังเล่น
+                document.getElementById('nowPlayingBar').classList.remove('visible');
+                return;
+            }
+            
+            // กำหนดเพลงปัจจุบัน
+            currentSongBox = this;
+            
+            // แสดงเอฟเฟกต์ equalizer
+            equalizer.classList.add('active');
+            this.querySelector('.play-icon').textContent = '⏸️';
+            
+            // สร้างเอฟเฟกต์โน้ตเพลง
+            createHeartNotes(heartNotesContainer);
+            
+            // สร้างโน้ตเพลงเพิ่มเติมทุกๆ 5 วินาที
+            const heartNotesInterval = setInterval(() => {
+                if (currentSongBox === this) {
+                    createHeartNotes(heartNotesContainer);
+                } else {
+                    clearInterval(heartNotesInterval);
+                }
+            }, 5000);
+            
+            currentAudio = new Audio(songPath);
+    
+            // ตั้งค่าตำแหน่งเริ่มต้น
+            currentAudio.addEventListener('loadedmetadata', function() {
+            // ตั้งค่าตำแหน่งเริ่มต้น
+            currentAudio.currentTime = startTime;
+            currentAudio.play();
+        
+        // ตรวจสอบและหยุดเมื่อถึงเวลาสิ้นสุดที่กำหนด
+        if (endTime > 0) {
+            const checkEndTime = setInterval(function() {
+                if (currentAudio && currentAudio.currentTime >= endTime) {
+                    currentAudio.pause();
+                    // จำลองเหตุการณ์ onended เพื่อรีเซ็ตการแสดงผล
+                    const endEvent = new Event('ended');
+                    currentAudio.dispatchEvent(endEvent);
+                    clearInterval(checkEndTime);
+                }
+            }, 1000);
+        }
+    });
+
+            // จำลองการเล่นเพลง (โค้ดนี้ใช้เฉพาะเมื่อคุณยังไม่มีไฟล์เพลงจริง)
+            currentAudio = new Audio();
+            currentAudio.src = songPath; currentAudio.play(); // ใช้เมื่อมีไฟล์เพลงจริง
+            
+            // จำลองการเล่นเพลง (สำหรับการสาธิต)
+            currentAudio.onended = function() {
+                equalizer.classList.remove('active');
+                document.getElementById('nowPlayingBar').classList.remove('visible');
+                currentSongBox.querySelector('.play-icon').textContent = '▶️';
+                currentAudio = null;
+                currentSongBox = null;
+                clearInterval(heartNotesInterval);
+            };
+            
+            // อัปเดตแถบแสดงเพลงที่กำลังเล่น
+            document.getElementById('nowPlayingThumb').src = coverImg;
+            document.getElementById('nowPlayingTitle').textContent = songTitle;
+            document.getElementById('nowPlayingArtist').textContent = songArtist;
+            document.getElementById('nowPlayingBar').classList.add('visible');
+            
+            // สร้างเอฟเฟกต์สั่น
+            this.style.transform = 'translateY(-5px) scale(1.03)';
+            setTimeout(() => {
+                this.style.transform = 'translateY(-5px)';
+            }, 200);
+        });
+    });
+    
+    // ปุ่มหยุดเล่นเพลง
+    document.getElementById('pauseBtn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (currentAudio && currentSongBox) {
+            if (currentAudio.paused) {
+                currentAudio.play();
+                this.textContent = '⏸️';
+                currentSongBox.querySelector('.equalizer').classList.add('active');
+                currentSongBox.querySelector('.play-icon').textContent = '⏸️';
+            } else {
+                currentAudio.pause();
+                this.textContent = '▶️';
+                currentSongBox.querySelector('.equalizer').classList.remove('active');
+                currentSongBox.querySelector('.play-icon').textContent = '▶️';
+            }
+        }
+    });
+    
+    // ปุ่มปิดเพลง
+    document.getElementById('closePlayerBtn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (currentAudio) {
+            currentAudio.pause();
+            if (currentSongBox) {
+                currentSongBox.querySelector('.equalizer').classList.remove('active');
+                currentSongBox.querySelector('.play-icon').textContent = '▶️';
+            }
+            currentAudio = null;
+            currentSongBox = null;
+        }
+        document.getElementById('nowPlayingBar').classList.remove('visible');
+    });
+    </script>
+</body>
+</html>
