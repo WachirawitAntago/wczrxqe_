@@ -739,6 +739,29 @@
         // อัปเดตตัวนับเวลาทุกวินาที
         setInterval(updateTimer, 1000);
         updateTimer(); // เริ่มต้นทันที
+
+        // เพิ่มฟังก์ชันสำหรับค่อยๆ เพิ่มความดัง
+function fadeInAudio(audio, duration = 3000) {
+    audio.volume = 0; // เริ่มที่ระดับเสียง 0
+    let volume = 0;
+    const interval = 50; // อัปเดตทุกๆ 50ms
+    const steps = duration / interval;
+    const increment = 1 / steps;
+    
+    const fadeInterval = setInterval(() => {
+        volume += increment;
+        if (volume >= 1) {
+            volume = 1;
+            clearInterval(fadeInterval);
+        }
+        audio.volume = volume;
+    }, interval);
+}
+
+// แล้วเรียกใช้ฟังก์ชันนี้หลังจาก play เพลง
+currentAudio.volume = 0; // ตั้งค่าเริ่มต้นเป็น 0
+currentAudio.play();
+fadeInAudio(currentAudio, 2000); // ค่อยๆ เพิ่มเสียงใน 2 วินาที
         
         // สร้างหัวใจลอย
         function createFloatingHearts() {
